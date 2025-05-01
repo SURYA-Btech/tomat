@@ -1,6 +1,6 @@
 import os
 
-# Explicitly install the google-generativeai library if not already installed
+# Force installation of google-generativeai at runtime (Streamlit Cloud-specific fix)
 os.system('pip install google-generativeai')
 
 import streamlit as st
@@ -23,7 +23,7 @@ uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 # When an image is uploaded
 if uploaded_file:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="Uploaded Image", use_container_width=True)  # Updated parameter
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
     # Define the prompt to detect tomato and provide detailed analysis
     prompt = """
